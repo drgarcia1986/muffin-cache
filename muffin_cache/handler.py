@@ -5,7 +5,7 @@ from muffin.handler import web, Handler
 from muffin.utils import abcoroutine
 
 
-class CachedHandler(Handler):
+class CacheHandler(Handler):
 
     CACHED_HTTP_METHODS = ('GET', 'OPTIONS')
 

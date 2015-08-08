@@ -1,7 +1,7 @@
-from .handler import CachedHandler
+from .handler import CacheHandler
 
 
-def cached_view(view, **kwargs):
-    return CachedHandler.from_view(
+def cache_view(view, **kwargs):
+    return CacheHandler.from_view(
         view, kwargs.get('methods', '*'), view.__name__
     )

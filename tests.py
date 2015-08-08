@@ -3,7 +3,7 @@
 import muffin
 import pytest
 
-from muffin_cache import CachedHandler, cached_view
+from muffin_cache import CacheHandler, cache_view
 
 
 @pytest.fixture(scope='session')
@@ -29,7 +29,7 @@ def test_should_cache_response(app, client):
     hit_view_count = 0
 
     @app.register('/cache')
-    class View(CachedHandler):
+    class View(CacheHandler):
 
         def get(self, request):
             nonlocal hit_view_count
@@ -51,7 +51,7 @@ def test_should_cache_json_response(app, client):
     hit_view_count = 0
 
     @app.register('/cache_json')
-    class View(CachedHandler):
+    class View(CacheHandler):
 
         def get(self, request):
             nonlocal hit_view_count
@@ -70,7 +70,7 @@ def test_should_cache_function_view(app, client):
     hit_view_count = 0
 
     @app.register('/cache_func')
-    @cached_view
+    @cache_view
     def cached(request):
         nonlocal hit_view_count
         hit_view_count += 1
@@ -87,7 +87,7 @@ def test_should_not_cache_unsafe_http_method(app, client):
     hit_view_count = 0
 
     @app.register('/dont-cache')
-    class View(CachedHandler):
+    class View(CacheHandler):
 
         def post(self, request):
             nonlocal hit_view_count

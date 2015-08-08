@@ -1,6 +1,6 @@
 from .plugin import Plugin  # noqa
-from .handler import CachedHandler  # noqa
-from .utils import cached_view  # noqa
+from .handler import CacheHandler  # noqa
+from .utils import cache_view  # noqa
 
 
 __version__ = "0.0.1"

@@ -7,10 +7,10 @@ flake8:
 	flake8 muffin_cache/
 
 test: clean flake8
-	py.test -x --cov-config .coveragerc --cov-report term-missing --cov muffin_cache test.py
+	py.test -x --cov-config .coveragerc --cov-report term-missing --cov muffin_cache tests.py
 
 test-debug: clean
-	py.test -x --pdb test.py
+	py.test -x --pdb tests.py
 
 requirements: clean
 	pip install -r requirements-dev.txt
