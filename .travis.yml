@@ -7,7 +7,7 @@ cache:
     - $HOME/.cache/pip
 
 install:
-    - make requirements-test
+    - make requirements-tests
     - pip install coveralls
 
 script: 
