@@ -1,0 +1,2 @@
+muffin>=0.0.99
+muffin-redis>=0.0.6

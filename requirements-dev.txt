@@ -1,0 +1,3 @@
+-r requirementx-test.txt
+
+bumpversion==0.5.3
