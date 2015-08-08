@@ -46,6 +46,57 @@ def test_should_cache_response(app, client):
     assert hit_view_count == 2
 
 
+def test_should_cache_response_in_any_querystring_parameters_order(
+    app, client
+):
+
+    hit_view_count = 0
+
+    @app.register('/cache-sorted-qs')
+    class View(CacheHandler):
+
+        def get(self, request):
+            nonlocal hit_view_count
+            hit_view_count += 1
+            return 'result'
+
+    response = client.get('/cache-sorted-qs?foo=1&bar=2')
+    assert response.text == 'result'
+    assert hit_view_count == 1
+
+    response = client.get('/cache-sorted-qs?bar=2&foo=1')
+    assert response.text == 'result'
+    assert hit_view_count == 1
+
+
+def test_should_cache_response_by_http_method(app, client):
+
+    hit_view_count = 0
+
+    @app.register('/cache-http-method')
+    class View(CacheHandler):
+
+        def get(self, request):
+            nonlocal hit_view_count
+            hit_view_count += 1
+            return 'result'
+
+        def options(self, request):
+            nonlocal hit_view_count
+            hit_view_count += 1
+            return 'result options'
+
+    for _ in range(2):
+        response = client.get('/cache-http-method')
+        assert response.text == 'result'
+        assert hit_view_count == 1
+
+    for _ in range(2):
+        response = client.options('/cache-http-method')
+        assert response.text == 'result options'
+        assert hit_view_count == 2
+
+
 def test_should_cache_json_response(app, client):
 
     hit_view_count = 0

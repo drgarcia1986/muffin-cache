@@ -28,7 +28,7 @@ class Plugin(BasePlugin):
         if 'redis' not in app.ps:
             raise PluginException(
                 'muffin-cache required muffin-redis package.'
-                'pip install muffin-redis to install'
+                'use pip install muffin-redis to install'
             )
 
     def finish(self, app):

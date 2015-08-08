@@ -10,9 +10,14 @@ class CacheHandler(Handler):
     CACHED_HTTP_METHODS = ('GET', 'OPTIONS')
 
     def _build_cache_key(self, request):
-        return 'muffin-cache-{path}-{query}'.format(
+        sorted_query_string = '-'.join(
+            sorted(request.query_string.split('&'))
+        )
+
+        return 'muffin-cache-{method}-{path}-{query}'.format(
+            method=request.method,
             path=request.raw_path,
-            query=request.query_string
+            query=sorted_query_string
         )
 
     @asyncio.coroutine
