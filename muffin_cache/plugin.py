@@ -2,7 +2,8 @@
 
 import asyncio
 
-from muffin.plugins import BasePlugin, PluginException
+from muffin.plugins import BasePlugin
+from muffin_redis import Plugin as RPlugin
 
 
 class Plugin(BasePlugin):
@@ -13,6 +14,7 @@ class Plugin(BasePlugin):
     defaults = {
         'lifetime': 60 * 30
     }
+    dependencies = {'redis': RPlugin}
 
     def __init__(self, *args, **kwargs):
         """ Initialize the Plugin. """
@@ -25,11 +27,7 @@ class Plugin(BasePlugin):
     @asyncio.coroutine
     def start(self, app):
         """ Start plugin. """
-        if 'redis' not in app.ps:
-            raise PluginException(
-                'muffin-cache required muffin-redis package.'
-                'use pip install muffin-redis to install'
-            )
+        pass
 
     def finish(self, app):
         """ Finish plugin. """

@@ -149,3 +149,12 @@ def test_should_not_cache_unsafe_http_method(app, client):
         response = client.post('/dont-cache')
         assert response.text == 'result'
         assert hit_view_count == i
+
+
+def test_should_dont_install_cache_plugin_without_redis(loop):
+    app = muffin.Application(
+        'cache', loop=loop,
+
+        PLUGINS=('muffin_cache',)
+    )
+    assert 'cache' not in app.ps
