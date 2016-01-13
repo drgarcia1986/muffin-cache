@@ -21,8 +21,8 @@ Requirements
 =============
 
 - python >= 3.4
-- muffin >= 0.0.99
-- muffin-redis >= 0.0.6
+- muffin >= 0.5.5
+- muffin-redis >= 0.3.0
 
 .. _installation:
 

@@ -15,8 +15,8 @@ test-debug: clean
 requirements: clean
 	pip install -r requirements-dev.txt
 
-requirements-tests: clean
-	pip install -r requirements-tests.txt
+requirements-test: clean
+	pip install -r requirements-test.txt
 
 release-patch:
 	bumpversion patch

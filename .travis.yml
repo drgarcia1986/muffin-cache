@@ -1,13 +1,15 @@
 language: python
 
-python: 3.4
+python: 
+    - 3.4
+    - 3.5
 
 cache:
   directories:
     - $HOME/.cache/pip
 
 install:
-    - make requirements-tests
+    - make requirements-test
     - pip install coveralls
 
 script: 
