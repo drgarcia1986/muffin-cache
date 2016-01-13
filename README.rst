@@ -31,7 +31,7 @@ Installation
 
 **Muffin-Cache** should be installed using pip: ::
 
-    pip install git+https://github.com/drgarcia1986/muffin-cache.git
+    pip install muffin-cache
 
 .. _usage:
 
