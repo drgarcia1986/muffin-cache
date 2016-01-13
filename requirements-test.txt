@@ -4,7 +4,7 @@
 pytest
 webtest
 fakeredis 
-pytest-cov==2.0.0
+pytest-cov==2.2.0
 pytest-cover==3.0.0
 pytest-coverage==0.0
-flake8==2.4.1
+flake8==2.5.1

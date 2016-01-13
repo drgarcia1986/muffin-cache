@@ -1,7 +1,7 @@
 import asyncio
 import pickle
 
-from muffin.handler import web, Handler
+from muffin.handler import Handler, Response
 from muffin.utils import abcoroutine
 
 
@@ -29,7 +29,7 @@ class CacheHandler(Handler):
         )
         if cached_response:
             raw_response = pickle.loads(cached_response)
-            response = web.Response(
+            response = Response(
                 status=raw_response['status'],
                 body=raw_response['body'],
                 content_type=raw_response['content_type']
